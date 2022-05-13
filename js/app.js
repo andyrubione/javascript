@@ -1,9 +1,9 @@
 const aceptado = prompt("Hola! ¿hacemos un algoritmo juntos? si te intriga pone si")
-if (aceptado == "si") {
+if (aceptado.toLowerCase () == "si") {
     console.log("Desafio Aceptado")
     const nombre = prompt("Perfecto!! me encanta la gente curiosa!, Te dije que tengo poderes mentales? a que adivino tu nombre, ponelo aca abajo y vas a ver!! Spoiler, solo funciona si sos mi tutor")
-    if (nombre === "Matias") {
-        console.log("Nombre: Matias")
+    if (nombre.toLowerCase () == "matias") {
+        console.log("Nombre: matias")
         alert("Bienvenido Matias! esto ya es un algoritmo, pero vamos a hacerlo mas interesante, dale a aceptar para continuar")
         const numero = prompt("Para seguir demostrando mis poderes mentales, vamos a adivinar un numero, elegi un numero del 1 al 10")
         if (numero <= 4 || numero >= 6) {
