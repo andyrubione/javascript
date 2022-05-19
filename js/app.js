@@ -1,44 +1,80 @@
-const aceptado = prompt("Hola! Hoy vamos a crear un bucle! Pone que si para continuar")
-if (aceptado.toLowerCase() == "si") {
-    console.log("Desafio Aceptado")
-    let numeroElegido = Number(prompt("Primero que nada vamos a hacer una cuenta, elegi el numero que quieras y vamos a realizar una suma simple: "))
-    for (let i = 0; i < 20; i++) {
-        let resultado = numeroElegido + i
-        console.log(numeroElegido + " + " + i + " = " + resultado)
-        if (resultado == 12) {
-            console.log("Hey hey! mas despacio cerebrito, tampoco queremos hacer fisica cuantica!")
-            break
+alert("Hola de nuevo! hoy vamos a hacer un simulador de fuerza y poleas")
+alert("La realidad es que aun no se de que sera el proyecto final, pero las poleas me parecen super interesantes")
+alert("Primero que nada ¿sabias que los kilos son en realidad una medida de fuerza y no de peso? es por eso que vamos a transformar los Kilos en Newtons (que si son una medida de peso)!")
+
+function kgaNewton(kg, newton) {
+    return kg * newton
+}
+
+let resultadoNewton
+let pesoIdeal
+
+while (pesoIdeal != true) {
+    resultadoNewton = kgaNewton(prompt("Ingresa tu peso en Kg "), 9.80)
+    if (resultadoNewton >= 9.80) {
+        console.log("Peso real: " + resultadoNewton + " Newtons")
+        alert("Perfecto!! tu peso real es igual a " + resultadoNewton + " Newtons")
+        pesoIdeal = true
+    } else {
+        alert("Debes ingresar un numero mayor a 1")
+    }
+}
+
+alert("Ahora que sabemos esto vamos a jugar con las poleas")
+alert("Los sistemas de poleas nos permiten realizar menos fuerza para levantar el mismo peso, es decir que para levantar " + resultadoNewton + " Newtons, emplearemos diferentes Kilogramosfuerza segun la cantidad de poleas que tengamos")
+alert("Existen varios tipos de operaciones, hoy veremos las mas sencillas: Polea Fija, Polea Movil y la Polea Potencial")
+alert("En todos los casos utilizaremos una polea Fija ya que existen multiples convinaciones... para este ejercicio solo hace falta seleccionar la cantidad de poleas moviles de 0 a 2 y yo me encargo del resto")
+
+let poleas
+while (poleas != true) {
+    function fuerza(poleaMovil, peso) {
+        switch (poleaMovil) {
+            case "0":
+                poleas = true
+                return alert("Para levantar " + peso + " Newtons, hace falta hacer " + peso + " Newtons, o para nosotros una fuerza de " + resultadoNewton / 9.8067 + " Kilos")
+                break
+            case "1":
+                poleas = true
+                return alert("Para levantar " + peso + " Newtons, hace falta hacer " + peso / 2 + " Newtons, o para nosotros una fuerza de " + (resultadoNewton / 2) / 9.80 + "Kilos")
+                break
+            case "2":
+                poleas = true
+                return alert("Para levantar " + peso + " Newtons, hace falta hacer " + peso / (2 ** poleaMovil) + " Newtons, o para nosotros una fuerza de " + (resultadoNewton / (2 ** poleaMovil)) / 9.80 + " Kilos")
+                break
+            default:
+                poleas = false
+                return alert("Como mencione anteriormente intentamos hacerlo sencillo, recorda seleccionar un numero del 0 al 2")
         }
     }
-    alert("Perdón pero tuve que frenar la cuenta, no queria recalentar mis transistores, se que lo entenderas...")
-    alert("Ahora vamos por algo mas complicado, vamos a intentar hacer una receta")
-    let ingredienteA
-    while (ingredienteA != "harina") {
-        ingredienteA = prompt("Cual es el principal ingrediente para hacer pan?: ").toLocaleLowerCase()
-        if (ingredienteA == "harina") {
-            alert("Perfecto! Harina es el primer ingrediente")
-            console.log("Harina... 500g")
-            let ingredienteB
-            while (ingredienteB != "agua") {
-                ingredienteB = prompt("Segundo ingrediente! es facil, la mayor parte de la superficie del planeta esta cubierta de este ingrediente: ")
-                if (ingredienteB == "agua") {
-                    alert("Excelente! solo nos falta un ingrediente mas")
-                    console.log("Agua... 325ml... que facil es esto")
-                    let ingredienteC
-                    while (ingredienteC != "levadura"){
-                        ingredienteC = prompt("Este ingrediente sirve para que la masa se haga mas grande: ")
-                        if (ingredienteC == "levadura"){
-                            alert("Levadura!! Perfecto!! la mayoria le pone sal tmb, pero no vamos a hacer esto mas largo ")
-                            console.log("Levadura... 15g... la sal es a gusto como siempre")
-                            alert("Felicitaciones!!! acabamos de hacer el primer pan virtual!! (o al menos la masa)... lo podremos vender como NFTs??")
-                        }
-                    }
+    fuerza(prompt("Selecciona un numero del 0 al 2: "),(prompt("Ingresa tu peso en Kg ")* 9.80))
+}
 
-                }
-            }
-        }
+let maxPolea = prompt("Ahora vamos a elegir un numero mas grande y vas a ver la diferencia, elegi el numero que quieras siempre que sea mayor a 2: ")
+if (maxPolea > 2) {
+    alert("La cantidad de poleas que elgiste es " + maxPolea + "... no habras exagerado un poco? No importa, mira la cantidad de fuerza que tenes que hacer para levantar los " + resultadoNewton + " Newtons que pesa tu cuerpo:")
+    alert("...redoble de tambores...")
+    alert(resultadoNewton / (2 ** maxPolea) + " Newtons!!!! o lo que es lo mismo: " + (resultadoNewton / (2 ** maxPolea)) / 9.80 + " Kilos, quien diría que con tan poca fuerza se podia levantar ese peso!!")
+    console.log(resultadoNewton / (2 ** maxPolea) + " Newtons para levantar " + resultadoNewton + " Newtons, o lo que es lo mismo: " + (resultadoNewton / (2 ** maxPolea)) / 9.80 + " Kilos")
+    alert("Pero lamento informarte que no todo es tan sencillo, ya que a mayor cantidad de poleas, mayor cantidad de soga/cadena tenes que arrastrar, vamos a averiguar cuanta sería para este caso en particular:")
+    let altura = prompt("Para determinar esto, primero determinemos una altura a la cual elevarte, cuantos metros queres subir?: ")
+    if (altura >= 1) {
+        alert("Que bueno que no tengas vertigo!! Ahora repasemos: tenemos un peso de " + resultadoNewton + " Newtons, ademas una cantidad de poleas igual a " + maxPolea + " y una altura de " + altura + " metros, saquemos la cuenta!")
+        console.log(resultadoNewton + " Newtons", maxPolea + " Poleas", altura + " metros")
+        let recorridoCuerda = altura * (2 ** maxPolea)
+        alert("Es necesario un recorrido de cuerda igual a " + recorridoCuerda + " metros!!!!! De solo pensarlo me agota")
+        console.log("Recorrido de cuerda: " + recorridoCuerda + " metros")
+    } else {
+        alert("Es necesario que coloques un numero mayor a 1")
     }
 } else {
-    console.log("Usted no aprende verdad?")
-    alert("Esto se soluciona de una sola forma...... apretando F5 por supuesto ")
+    alert("La cantidad de Poleas tiene que ser mayor a 2")
 }
+
+alert("Espero que hayas aprendido algo sobre el uso de poleas, yo aprendí dos cosas sobre Javascript: la practica hace al maestro y siempre van a haber errores en el codigo...")
+
+
+
+
+
+
+
